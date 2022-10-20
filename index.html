@@ -32,20 +32,20 @@
             <div class="divider"></div>
             <form id="floorselectors">
                 <li>
-                    <input type="radio" name="siteselector" id="IWF" value="1469">
-                    <label for="IWF">Bangalore IWF02 - Floor 1 <span>FloorID 1469 - 964 desks</span></label>
+                    <input type="radio" name="siteselector" id="IWF" value="1469" checked>
+                    <label for="IWF">Bangalore IWF02 - Floor 1 <span>FloorID 1469 - 963 reservable spaces</span></label>
                 </li>
                 <li>
                     <input type="radio" name="siteselector" id="GLJ" value="160">
-                    <label for="GLJ">Guadalajara GLJ01 - 01E <span>FloorID 160 - 674</span></label>
+                    <label for="GLJ">Guadalajara GLJ01 - 01E <span>FloorID 160 - 393 reservable spaces</span></label>
                 </li>
                 <li>
                     <input type="radio" name="siteselector" id="OJI" value="559">
-                    <label for="OJI">Ojima OJI - 2F <span>FloorID 559 - 404 desks</span></label>
+                    <label for="OJI">Ojima OJI - 2F <span>FloorID 559 - 242 reservable spaces</span></label>
                 </li>
                 <li>
                     <input type="radio" name="siteselector" id="HST" value="1459">
-                    <label for="HST">Houston HST01 - 04 <span>FloorID 1459 - 243 desks</span></label>
+                    <label for="HST">Houston HST01 - 04 <span>FloorID 1459 - 153 reservable spaces</span></label>
                 </li>
             </form>
             <button id="runtest">Run Test</button>
@@ -116,8 +116,9 @@
     <script>   
 
         // returns freebusy data from iOFFICE server
-        async function freeBusy(floorid, limit, userid, index) {
+        async function freeBusy(limit, userid, index) {
 
+            const floorid = document.querySelector('input[name="siteselector"]:checked').value;
             // endpoint
             const response = await fetch(`https://hpe.iofficeconnect.com/external/api/rest/v2/rooms?cacheBuster=1666113676554&checkReservationRules=true&floorId=${floorid}&includeNonReservable=false&includeReservable=true&limit=${limit}&selector=anonymousReservations(endDate%2CnumberOfPeople%2CstartDate)%2CexchangeAddress%2CreservableByRules&userId=${userid}`, {
                 method: 'GET',
@@ -142,7 +143,7 @@
         // Runs the API call as specified
         async function test(rotations, time, limit){
             for (let index = 0; index < rotations; index++) {
-                freeBusy(1469, limit, 5000+index, index);  //5000+index changes the userid for every call to simulate multiple users
+                freeBusy(limit, 5000+index, index);  //5000+index changes the userid for every call to simulate multiple users
                 await sleep(time);
             }
         }
