@@ -30,6 +30,16 @@
                 </li>
             </form>
             <div class="divider"></div>
+            <form id="floorselectors">
+                <li>
+                    <input type="radio" name="IWF" id="IWF">
+                    <label for="IWF">IWF02 - Floor 1 <span>(FloorID 1469)</span></label>
+                </li>
+                <li>
+                    <input type="radio" name="GLJ" id="GLJ">
+                    <label for="GLJ">GLJ01 - 01E <span>(FloorID 160)</span></label>
+                </li>
+            </form>
             <button id="runtest">Run Test</button>
             <div id="results">
             </div>
@@ -41,16 +51,19 @@
             background-color: rgb(40, 40, 40);
             color: white;
             font-family: 'Roboto', sans-serif;
-            font-size: 24pt;
+            font-size: 20pt;
         }
         h1 {
             font-size: 36pt;
         }
-        input {
+        input[type=number] {
             border-radius: 14px;
             border: #4b4b4b 2px solid;
             padding: 5px 12px;
             min-width: 100px;
+        }
+        input[type=radio] {
+            transform: scale(1.8);
         }
         label {
             margin-left: 10px;
