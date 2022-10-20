@@ -32,19 +32,19 @@
             <div class="divider"></div>
             <form id="floorselectors">
                 <li>
-                    <input type="radio" name="siteselector" id="IWF">
+                    <input type="radio" name="siteselector" id="IWF" value="1469">
                     <label for="IWF">Bangalore IWF02 - Floor 1 <span>FloorID 1469 - 964 desks</span></label>
                 </li>
                 <li>
-                    <input type="radio" name="siteselector" id="GLJ">
+                    <input type="radio" name="siteselector" id="GLJ" value="160">
                     <label for="GLJ">Guadalajara GLJ01 - 01E <span>FloorID 160 - 674</span></label>
                 </li>
                 <li>
-                    <input type="radio" name="siteselector" id="OJI">
+                    <input type="radio" name="siteselector" id="OJI" value="559">
                     <label for="OJI">Ojima OJI - 2F <span>FloorID 559 - 404 desks</span></label>
                 </li>
                 <li>
-                    <input type="radio" name="siteselector" id="HST">
+                    <input type="radio" name="siteselector" id="HST" value="1459">
                     <label for="HST">Houston HST01 - 04 <span>FloorID 1459 - 243 desks</span></label>
                 </li>
             </form>
@@ -56,7 +56,7 @@
 
     <style>
         * {
-            background-color: rgb(40, 40, 40);
+            background-color: #242424;
             color: white;
             font-family: 'Roboto', sans-serif;
             font-size: 20pt;
@@ -78,7 +78,10 @@
         }
         li {
             list-style-type: none;
-            margin: 10px 0px;
+            margin: 15px 0px;
+        }
+        #results {
+            margin-bottom: 80vh;
         }
         #results > li {
             font-size: 16pt;
@@ -87,6 +90,9 @@
             background-color: #373737;
             height: 2px;
             margin: 40px 0px;
+        }
+        form#floorselectors li label {
+            font-size: 18pt;
         }
         form#floorselectors li label span {
             font-size: 0.6em;
