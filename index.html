@@ -119,6 +119,10 @@
         async function freeBusy(limit, userid, index) {
 
             const floorid = document.querySelector('input[name="siteselector"]:checked').value;
+            
+            //start timer to time response
+            const start_time = new Date().getTime()
+
             // endpoint
             const response = await fetch(`https://hpe.iofficeconnect.com/external/api/rest/v2/rooms?cacheBuster=1666113676554&checkReservationRules=true&floorId=${floorid}&includeNonReservable=false&includeReservable=true&limit=${limit}&selector=anonymousReservations(endDate%2CnumberOfPeople%2CstartDate)%2CexchangeAddress%2CreservableByRules&userId=${userid}`, {
                 method: 'GET',
@@ -133,9 +137,12 @@
             const data = await response.json();
             console.log(data);
 
+            // stop timer and register response time
+            const responsetime = (new Date().getTime() - start_time);
+
             // adds confirmation text for each run to page
             const resultli = document.createElement('li');
-            resultli.textContent = `Test #${index + 1} complete`
+            resultli.textContent = `Test #${index + 1} complete in ${responsetime/1000} seconds`
             const resultlist = document.getElementById('results');
             resultlist.appendChild(resultli);
         }
