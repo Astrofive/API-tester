@@ -124,6 +124,8 @@
         // pulls values on page and runs test on button click
         const runbutton = document.getElementById('runtest');
         runbutton.addEventListener('click', () => {
+            const resultslist = document.getElementById('results');
+            resultslist.innerHTML = '';
             const testruns = document.getElementById('testruns').value;
             const ms = document.getElementById('ms').value;
             const limit = document.getElementById('limit').value;
