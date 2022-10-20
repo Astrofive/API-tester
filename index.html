@@ -13,7 +13,7 @@
 </head>
 <body>
     <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 15vh;">
-        <div style="">
+        <div>
             <h1>Kevin's API Stress Tester</h1>
             <form>
                 <li>
@@ -32,12 +32,20 @@
             <div class="divider"></div>
             <form id="floorselectors">
                 <li>
-                    <input type="radio" name="IWF" id="IWF">
-                    <label for="IWF">IWF02 - Floor 1 <span>(FloorID 1469)</span></label>
+                    <input type="radio" name="siteselector" id="IWF">
+                    <label for="IWF">Bangalore IWF02 - Floor 1 <span>FloorID 1469 - 964 desks</span></label>
                 </li>
                 <li>
-                    <input type="radio" name="GLJ" id="GLJ">
-                    <label for="GLJ">GLJ01 - 01E <span>(FloorID 160)</span></label>
+                    <input type="radio" name="siteselector" id="GLJ">
+                    <label for="GLJ">Guadalajara GLJ01 - 01E <span>FloorID 160 - 674</span></label>
+                </li>
+                <li>
+                    <input type="radio" name="siteselector" id="OJI">
+                    <label for="OJI">Ojima OJI - 2F <span>FloorID 559 - 404 desks</span></label>
+                </li>
+                <li>
+                    <input type="radio" name="siteselector" id="HST">
+                    <label for="HST">Houston HST01 - 04 <span>FloorID 1459 - 243 desks</span></label>
                 </li>
             </form>
             <button id="runtest">Run Test</button>
@@ -79,6 +87,10 @@
             background-color: #373737;
             height: 2px;
             margin: 40px 0px;
+        }
+        form#floorselectors li label span {
+            font-size: 0.6em;
+            color: #585858;
         }
         button {
             border: none;
