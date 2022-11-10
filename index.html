@@ -133,16 +133,27 @@
                 },
             })
 
+            const userresponse = await fetch(`https://hpe.iofficeconnect.com/external/api/rest/v2/users/${userid}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-auth-username': 'hpeapitesting',
+                    'x-auth-password': `${apipassword}`,
+                },
+            })
+
             // convert data to JSON
             const data = await response.json();
-            console.log(data);
+            const userdata = await userresponse.json();
+            
+            // console.log(data);
 
             // stop timer and register response time
             const responsetime = (new Date().getTime() - start_time);
 
             // adds confirmation text for each run to page
             const resultli = document.createElement('li');
-            resultli.textContent = `Test #${index + 1} complete in ${responsetime/1000} seconds`
+            resultli.textContent = `Test #${index + 1}, simulating user ${userdata.firstName} ${userdata.lastName} (userID ${userid}), complete in ${responsetime/1000} seconds`
             const resultlist = document.getElementById('results');
             resultlist.appendChild(resultli);
         }
@@ -150,7 +161,7 @@
         // Runs the API call as specified
         async function test(rotations, time, limit){
             for (let index = 0; index < rotations; index++) {
-                freeBusy(limit, 5000+index, index);  //5000+index changes the userid for every call to simulate multiple users
+                freeBusy(limit, Math.floor(Math.random() * 10000), index);  //simulates random user between userID 0 and 9999
                 await sleep(time);
             }
         }
